@@ -177,24 +177,21 @@ if user_state["streak"] > 0 and user_state["streak"] % 5 == 0:
 st.header("📊 Recent Logs")
 
 if user_state["logs"]:
-   for log in reversed(user_state["logs"][-5:]):
-    st.write(f"Date: {log.get('date', 'Unknown')}")
+    for log in reversed(user_state["logs"][-5:]):
+        st.write(f"Date: {log.get('date', 'Unknown')}")
 
-    energy = log.get("energy", "N/A")
-    mood = log.get("mood", "N/A")
-    fatigue = log.get("fatigue", "N/A")
-    notes = log.get("notes", "No notes recorded")
+        energy = log.get("energy", "N/A")
+        mood = log.get("mood", "N/A")
+        fatigue = log.get("fatigue", "N/A")
+        notes = log.get("notes", "No notes recorded")
 
-    st.write(f"Energy: {energy} | Mood: {mood} | Fatigue: {fatigue}")
-    st.write(f"Notes: {notes}")
+        st.write(f"Energy: {energy} | Mood: {mood} | Fatigue: {fatigue}")
+        st.write(f"Notes: {notes}")
 
-    if "plan" in log:
-        for k, v in log["plan"].items():
-            st.write(f"- {k}: {v}")
+        if "plan" in log:
+            for k, v in log["plan"].items():
+                st.write(f"- {k}: {v}")
 
-    st.write("---")
-        for k, v in log["plan"].items():
-            st.write(f"- {k}: {v}")
         st.write("---")
 else:
     st.write("No logs yet.")
