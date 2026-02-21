@@ -12,13 +12,13 @@ if os.path.exists(STATE_FILE):
     with open(STATE_FILE, "r") as f:
         user_state = json.load(f)
 else:
-    user_state = {
-        "logs": [],
-        "streak": 0,
-        "last_log_date": None,
-        "chat_history": []
-    }
+    user_state = {}
 
+# Ensure all required keys exist
+user_state.setdefault("logs", [])
+user_state.setdefault("streak", 0)
+user_state.setdefault("last_log_date", None)
+user_state.setdefault("chat_history", [])
 def save_state():
     with open(STATE_FILE, "w") as f:
         json.dump(user_state, f, indent=4)
